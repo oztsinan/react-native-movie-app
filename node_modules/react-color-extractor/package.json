@@ -1,0 +1,55 @@
+{
+  "name": "react-color-extractor",
+  "version": "1.1.2",
+  "description": "A React component which extracts colors from an image",
+  "main": "build/react-color-extractor.js",
+  "module": "build/react-color-extractor.es.js",
+  "unpkg": "build/react-color-extractor.min.js",
+  "repository": "https://github.com/nitin42/react-color-extractor",
+  "author": "Nitin <tulswani19@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "flow-bin": "^0.79.1",
+    "husky": "^1.0.0-rc.13",
+    "lint-staged": "^7.2.2",
+    "parcel-bundler": "^1.9.7",
+    "prettier": "^1.14.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "rollup": "^0.65.0",
+    "rollup-plugin-babel": "^3.0.7",
+    "rollup-plugin-filesize": "^4.0.1",
+    "rollup-plugin-replace": "^2.0.0",
+    "rollup-plugin-uglify": "^4.0.0"
+  },
+  "dependencies": {
+    "node-vibrant": "^3.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.3.2"
+  },
+  "scripts": {
+    "build:component": "NODE_ENV=production rollup -c",
+    "flow": "flow",
+    "start": "parcel ./public/index.html",
+    "build:website": "NODE_ENV=production parcel build ./website/index.js",
+    "deploy": "yarn build:website && surge"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write --no-semi --single-quote",
+      "git add"
+    ]
+  }
+}
